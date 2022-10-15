@@ -302,7 +302,25 @@ void customers :: renters (){
 }
 
 void customers :: buyers (){
-    renters ();
+    cars c;
+    int bill,price;
+    c.available_cars (0);
+
+    string model;
+    int number;
+
+    cout<<"Enter the model of the car: ";
+    cin>>model;
+
+    cout<<"Enter the number of cars: ";
+    cin>> number;
+
+    bill = c.replace_cars_content (model, number, 0,1);
+    if (bill){
+        price = discount_calculator (model,current_licence);
+        bill_generator (model,number,price,current_licence);
+        shop_balance ((price)*number);
+    }
 }
 
 void customers :: returners (){
